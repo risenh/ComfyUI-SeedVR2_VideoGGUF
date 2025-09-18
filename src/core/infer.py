@@ -18,21 +18,26 @@ import torch
 from einops import rearrange
 from omegaconf import DictConfig, ListConfig
 from torch import Tensor
-from src.optimization.memory_manager import clear_vram_cache
 
-from src.common.diffusion import (
+from ..optimization.memory_manager import clear_vram_cache
+
+from ..common.diffusion import (
     classifier_free_guidance_dispatcher,
     create_sampler_from_config,
     create_sampling_timesteps_from_config,
     create_schedule_from_config,
 )
-from src.common.distributed import (
+
+from ..common.distributed import (
+
     get_device,
 )
 
 # from common.fs import download
 
-from src.models.dit_v2 import na
+
+from ..models.dit_v2 import na
+
 
 
 def optimized_channels_to_last(tensor):

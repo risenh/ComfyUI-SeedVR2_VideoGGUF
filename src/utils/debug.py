@@ -10,7 +10,10 @@ import torch
 import psutil
 import gc
 from typing import Optional, List, Dict, Any, Tuple, Union, Set
-from src.optimization.memory_manager import get_vram_usage, get_basic_vram_info
+
+# from src.optimization.memory_manager import get_vram_usage, get_basic_vram_info
+from ..optimization.memory_manager import get_vram_usage, get_basic_vram_info
+
 
 
 class Debug:

@@ -11,9 +11,11 @@ import gc
 import time
 import psutil
 from typing import Tuple, Optional
-from src.common.cache import Cache
-from src.models.dit_v2.rope import RotaryEmbeddingBase
-from src.common.distributed import get_device
+
+from ..common.cache import Cache
+from ..models.dit_v2.rope import RotaryEmbeddingBase
+from ..common.distributed import get_device
+
 
 try:
     from comfy import model_management as mm

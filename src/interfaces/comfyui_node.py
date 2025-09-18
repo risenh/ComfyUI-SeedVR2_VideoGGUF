@@ -7,16 +7,19 @@ import time
 import torch
 from typing import Tuple, Dict, Any
 
-from src.utils.constants import get_base_cache_dir
-from src.utils.downloads import download_weight
-from src.utils.model_registry import get_available_models, DEFAULT_MODEL, DEFAULT_GGUF_MODEL
-from src.utils.constants import get_script_directory
-from src.utils.debug import Debug
-from src.core.model_manager import configure_runner
-from src.core.generation import generation_loop
-from src.optimization.memory_manager import fast_model_cleanup, fast_ram_cleanup, get_vram_usage
-from src.optimization.blockswap import cleanup_blockswap
-from src.optimization.memory_manager import (
+
+# from src.utils.constants import get_base_cache_dir
+from ..utils.constants import get_base_cache_dir  # 相对导入，指向当前节点的src/utils
+from ..utils.downloads import download_weight
+from ..utils.model_registry import get_available_models, DEFAULT_MODEL, DEFAULT_GGUF_MODEL
+from ..utils.constants import get_script_directory
+from ..utils.debug import Debug
+from ..core.model_manager import configure_runner
+from ..core.generation import generation_loop
+from ..optimization.memory_manager import fast_model_cleanup, fast_ram_cleanup, get_vram_usage
+from ..optimization.blockswap import cleanup_blockswap
+from ..optimization.memory_manager import (
+
     clear_rope_lru_caches, 
     fast_model_cleanup, 
     fast_ram_cleanup, 

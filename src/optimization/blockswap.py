@@ -20,9 +20,10 @@ import gc
 import psutil
 
 from typing import Dict, Any, List, Tuple, Optional, Union
-from src.optimization.memory_manager import get_vram_usage
-from src.optimization.compatibility import call_rope_with_stability
-from src.common.distributed import get_device
+
+from .memory_manager import get_vram_usage
+from .compatibility import call_rope_with_stability
+from ..common.distributed import get_device
 
 
 def get_module_memory_mb(module: torch.nn.Module) -> float:

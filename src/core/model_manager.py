@@ -19,7 +19,9 @@ import os
 import gc
 import time
 import torch
-from src.utils.constants import get_script_directory
+
+from ..utils.constants import get_script_directory
+
 from omegaconf import DictConfig, OmegaConf
 
 # Import SafeTensors with fallback
@@ -34,23 +36,27 @@ try:
     import gguf
     import warnings
     import traceback
-    from src.optimization.gguf_dequant import dequantize_tensor as fast_dequantize
+
+    from ..optimization.gguf_dequant import dequantize_tensor as fast_dequantize
+
     GGUF_AVAILABLE = True
 except ImportError:
     print("⚠️ GGUF not available, recommended install: pip install gguf")
     GGUF_AVAILABLE = False
 
-from src.optimization.memory_manager import get_basic_vram_info, clear_vram_cache
-from src.optimization.compatibility import FP8CompatibleDiT
-from src.optimization.memory_manager import preinitialize_rope_cache, clear_rope_lru_caches
-from src.common.config import load_config, create_object
-from src.core.infer import VideoDiffusionInfer
-from src.optimization.blockswap import apply_block_swap_to_dit
-from src.common.distributed import get_device
+
+from ..optimization.memory_manager import get_basic_vram_info, clear_vram_cache
+from ..optimization.compatibility import FP8CompatibleDiT
+from ..optimization.memory_manager import preinitialize_rope_cache, clear_rope_lru_caches
+from ..common.config import load_config, create_object
+from ..core.infer import VideoDiffusionInfer
+from ..optimization.blockswap import apply_block_swap_to_dit
+from ..common.distributed import get_device
 
 # Import GGUF ops for quantized model support
 try:
-    from src.optimization.gguf_ops import apply_quantized_ops
+    from ..optimization.gguf_ops import apply_quantized_ops
+
     GGUF_OPS_AVAILABLE = True
 except ImportError:
     GGUF_OPS_AVAILABLE = False

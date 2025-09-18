@@ -20,18 +20,20 @@ import os
 import gc
 import torch
 import time
-from src.utils.constants import get_script_directory
+
+from ..utils.constants import get_script_directory
 from torchvision.transforms import Compose, Lambda, Normalize
-from src.common.distributed import get_device
+from ..common.distributed import get_device
 
 
 # Import required modules
-from src.optimization.memory_manager import reset_vram_peak, clear_all_caches
-from src.optimization.performance import (
+from ..optimization.memory_manager import reset_vram_peak, clear_all_caches
+from ..optimization.performance import (
     optimized_video_rearrange, optimized_single_video_rearrange, 
     optimized_sample_to_image_format, temporal_latent_blending
 )
-from src.common.seed import set_seed
+from ..common.seed import set_seed
+
 try:
     import comfy.model_management
     COMFYUI_AVAILABLE = True
@@ -43,10 +45,12 @@ script_directory = get_script_directory()
 
 # Import transforms and color fix
 
-from src.data.image.transforms.divisible_crop import DivisibleCrop
-from src.data.image.transforms.na_resize import NaResize
 
-from src.utils.color_fix import wavelet_reconstruction
+from ..data.image.transforms.divisible_crop import DivisibleCrop
+from ..data.image.transforms.na_resize import NaResize
+
+from ..utils.color_fix import wavelet_reconstruction
+
 
 
 
